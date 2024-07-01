@@ -1,0 +1,33 @@
+From SYNdicate:
+
+Automate as much as you can.
+
+Scan memory for meterpreter shells and rip them out of memory when found (I think injdmp or something is a tool that can do this?)
+
+The BIND 9 bug the red team often goes for CVE-2015-5477 I think (BIND is a big target, anyway)
+
+
+Local and host firewall setup is HUGE. That was their secret weapon. 
+
+Be persistent about patching (download the latest versions of the software and apply them)
+
+PSSH to manage multiple Linux machines is an awesome tool, and one we can take advantage of.
+
+Prepare for legacy systems like Solaris and older versions of Linux
+
+Write automated iptables rules if you can.  
+
+MAKE SURE you use SSH private keys. Only authenticate to boxes using those -- don't use passwords.
+
+Do what you can to disable PowerShell (I think setting Constrained Language Mode is the best we can do...?)
+
+"you want one script to run on each box
+all automation wrapped up into that one script
+and to run it as soon as the game starts
+to lock everything down as much as possible
+and as soon as possible
+having per-machine firewall rules should help a lot
+then you just need to worry about patching
+which is a slower process
+but you can run things like apt-get update on linux
+I think there are auto-updater tools out there also, but not sure"

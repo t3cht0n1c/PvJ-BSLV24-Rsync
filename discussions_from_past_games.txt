@@ -1,0 +1,98 @@
+(These are notes from discussions before and during games)
+
+0x3b0b
+  2 years ago
+The stuff about binary checksums relates to one of the things I'd been thinking about. Having learned last time of the possibility of things like ls and cat and maybe even package managers being modified to spawn C2 in addition to (what at least appears to be) doing their normal jobs, I'd been contemplating the idea of trying to anticipate some OS/version combinations in advance, and for ones not anticipated possibly try to do this on the fly with a VM or container, and just straight up plan on connecting with console and directly replacing some binaries with known good versions. Vaguely thinking the idea would be a starting payload of tar, gzip, and a tar.gz of whatever else seems appropriate. (passwd, etc)
+:+1:
+
+
+dook
+  2 years ago
+when i was running my own mini version of this CTF, 
+@aboro
+ was playing and started replacing the ls binary with one that would fire off a beacon...then return the results of ls
+
+
+dook
+  2 years ago
+sneaky
+
+
+The following was found in sudoers configurations
+
+
+# See sudoers(5) for more information on "#include" directives:
+
+bin ALL=(ALL:ALL) NOPASSWD:ALL
+www-data ALL=(ALL:ALL) NOPASSWD:ALL
+apache ALL=(ALL:ALL) NOPASSWD:ALL
+httpd ALL=(ALL:ALL) NOPASSWD:ALL
+
+
+rsync with delete and checksum options of the pfsense web dir from a matching clean install would remove any webshells in there
+7:34
+Finding cronjobs that put them back is another exercise left to the reader :stuck_out_tongue:
+
+
+Bit more stream-of-consciousness: There was something the red cell said after BSLV about teams enabling TLS for something which made hiding C2 traffic much easier, and I was trying to figure out whether that was part of why none of what I tried to set up in Gigamon ever detected anything.
+7:46
+I was detecting what looked like it might be c2 traffic for other teams, but never for mine.
+7:49
+Now, Windows...um...I definitely felt out of my depth after hearing Red talk about what they'd had going on in Windows. Not just for the 60-or-so persistence mechanisms, but the fact that they
+had some kind of hooks running which drove one of the persistence mechanisms that I still don't even understand enough to try to research
+were getting "golden tickets" from Active Directory, which I still don't understand how to prevent
+had infiltrated at such a low level that listing processes (whether in task manager or powershell or whatever) had been compromised to prevent their processes from being displayed
+7:49
+so those are the kinds of things I didn't even realize we could be up against
+7:52
+I also recently learned about a trick similar to that third point of using /etc/ld.so.preload to add malicious libraries so that ps and top won't display certain things.
+7:52
+Learned it exists, that is. I don't understand it.
+
+
+exotime
+  7:54 PM
+Resetting KRBTGT account password twice to generate a new signing key is the beginning of responding to a golden ticket... But by that stage you are well and truly hosed.
+7:55
+Was that a video or doc you can link?
+
+
+0x3b0b
+  8:02 PM
+https://sysdig.com/blog/falco-vs-auditd-hids/ and https://sysdig.com/blog/unveil-processes-falco-cloud/ are where I was trying to read up on Falco and AuditD.
+I got to those from wanting to learn more about Falco, and I found out Falco exists in the first place because something else I was looking into had taken me to an article about compiling your own kernel for WSL2, and that had a reference to an article someone had written about compiling a WSL2 kernel with Falco, so I looked up Falco...I'm sure if I kept going I'd have ended up on the wikipedia page for "philosophy"
+
+
+I know at least one red teamer may be hatching nefarious ideas revolving around clipboard sharing vectors
+
+
+Another thing I gathered after last time was that a properly trained magician with a pcap on pfsense could theoretically figure out a lot of things I had no idea how to track down.
+
+
+^Sounds especially useful for tracking down beacons since they are transmitted as plaintext.
+
+Red team most certainly watching clipboards. Don't copy/paste anything you don't want them to know.
+
+https://twitter.com/dichotomy1/status/1193274225068564481/photo/1
+
+
+Love the idea of not patching our windows boxes, as it could take the ages and even take forever on reboot, but rather try and find the major rce vulns and the specific fixes for those issues
+
+WRT process monitors: During the hotwash last time I
+12:45
+hit enter before I meant to, and also I'm pretty sure iDigitalFlame basically said he had hooked into Windows at the equivalent of the syscall level so that there was basically no such thing as a tool that would list his processes unless you knew to look for and remove the hook first.
+
+Did some reading on picking up hooks, in Windows that’s a call to VirtualProtect. But I think that’s startup execution only.
+4:43
+Hooks in the too hard basket
+
+
+1 lazymans persistence....if you get a msf meterpreter shell back, always migrate it.  On Windows i like running migrate -N svchost.exe.  As long as the box doesn't restart, it should remain dormant.  I know this isn't proper persistence...but...a basic tip for MSF
+
+https://github.com/BishopFox/sliver
+
+https://docs.microsoft.com/en-us/sysinternals/downloads/sigcheck
+
+https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/enable-exploit-protection?view=o365-worldwide
+
+Advice from a red teamer: consider firing anything suspicious off to virustotal or similar.

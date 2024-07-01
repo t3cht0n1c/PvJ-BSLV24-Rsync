@@ -1,0 +1,8 @@
+custom/3_find_suspicous.sh
+custom/6_deploy_issue.sh
+custom/1_hash_everything.sh
+custom/0_find_newer.sh
+custom/7_pull_logs.sh
+custom/5_linpeas_run.sh
+custom/4_chkrootkits_run.sh
+custom/2_process_dump_all.sh

@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+# build-2.7-tars.sh
+# To be run on the Linux source (iso mounted) side
+# This packages each directory retaining permissions and ownership
+
+set -x
+sudo tar czf /home/katin/Lab/pfSense/pfver27/bin1.tar.gz /mnt/lqdisk/bin
+sudo tar czf /home/katin/Lab/pfSense/pfver27/boot1.tar.gz /mnt/lqdisk/boot
+sudo tar czf /home/katin/Lab/pfSense/pfver27/etc1.tar.gz /mnt/lqdisk/etc
+sudo tar czf /home/katin/Lab/pfSense/pfver27/lib1.tar.gz /mnt/lqdisk/lib
+sudo tar czf /home/katin/Lab/pfSense/pfver27/libexec1.tar.gz /mnt/lqdisk/libexec
+sudo tar czf /home/katin/Lab/pfSense/pfver27/root1.tar.gz /mnt/lqdisk/root
+sudo tar czf /home/katin/Lab/pfSense/pfver27/sbin1.tar.gz /mnt/lqdisk/sbin
+sudo tar czf /home/katin/Lab/pfSense/pfver27/usr1.tar.gz /mnt/lqdisk/usr
+sudo tar czf /home/katin/Lab/pfSense/pfver27/var1.tar.gz /mnt/lqdisk/var
+

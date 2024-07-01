@@ -1,0 +1,28 @@
+## Some notes from preivous DEFCON talks
+# other tricks welcome! 
+
+# screwing with command + process substitution
+diff foo <(sort foo) -> makes sorted version and finds differences from file on disk
+
+# print unqiue lines without sorting
+awk '{ if (!seen[$0]++) print }' /tmp/foo
+# SSH tricks
+ssh -J user@host1 user2@host2 proxy
+
+# copying to clipboard selection
+xsel -b < file.txt
+
+# files that snitch
+~/.wget-hsts
+~/.lesshst
+VIM *.swp files .vminfo
+
+# covering track
+unset HISTFILE
+export HISTFILE=/dev/null
+ln -sf /dev/null ~/.bash_history # will make user sad since its now linked forever no more history he will come for u now
+history -c; kill -9 $$
+
+# Dont have LS?
+echo *
+find . -maxdepth 1
