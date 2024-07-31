@@ -27,3 +27,15 @@ admin:pfsense
 > Or even better: dont allow access to the webGUI at all besides via a VPN (OpenVPN comes to mind).
 > 
 > Run as few packages/services as possible.
+
+## Quick Commands:
+Show filter information:
+```
+pfctl -s rules
+or
+pfctl -sr
+```
+Show filter information for which FILTER rules hit:
+```
+pfctl -v -s rules
+```
