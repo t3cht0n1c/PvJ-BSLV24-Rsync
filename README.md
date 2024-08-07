@@ -18,7 +18,7 @@ The Team
 6. __7im3Crisys__ - 
 7. __Soren Sorensen__ - 
 8. __RexManning__ -
-9. __Kent Davis__ - 
+9. __PunchStain__ - 
 10. __xypmxt__ - 
 11. __Ray__ -
 12. __Evan__ -  
