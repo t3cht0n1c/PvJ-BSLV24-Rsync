@@ -1,0 +1,11 @@
+/etc/gettytab
+
+locate line to edit:
+Pc|Pc console:\
+    :ht:np:sp#115200:al=root:lc:
+
+remove only "al=root:" so it reads:
+Pc|Pc console:\
+    :ht:np:sp#115200:lc:
+
+reboot
