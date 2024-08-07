@@ -1,0 +1,41 @@
+# Disable root login
+PermitRootLogin no
+
+# Allow only key-based authentication
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+UsePAM no
+
+# Enable public key authentication
+PubkeyAuthentication yes
+
+# Specify the location of authorized keys
+AuthorizedKeysFile .ssh/authorized_keys
+
+# Disable empty passwords
+PermitEmptyPasswords no
+
+# Disable X11 forwarding unless needed
+X11Forwarding no
+
+# Enable privilege separation
+UsePrivilegeSeparation sandbox
+
+# Enable logging
+SyslogFacility AUTH
+LogLevel INFO
+
+# Set a short login grace time
+LoginGraceTime 1m
+
+# Set a maximum number of authentication attempts
+MaxAuthTries 3
+
+# Disable TCP forwarding unless needed
+AllowTcpForwarding no
+
+# Disable agent forwarding unless needed
+AllowAgentForwarding no
+
+# Enable compression (optional)
+Compression delayed
